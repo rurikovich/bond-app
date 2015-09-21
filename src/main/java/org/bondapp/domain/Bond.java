@@ -2,24 +2,20 @@ package org.bondapp.domain;
 
 public class Bond {
 
-    private final long id;
-    private String isin;
-    private String issuer;
-    private long releaseDate;
-    private long repaymentDate;
+    private final String isin;
+    private final String issuer;
+    private final long releaseDate;
+    private final long repaymentDate;
+
     private double rating;
     private double outstandingNominal;
-    private double profitability;
-    private double duration;
-    private double roe;
 
-    public Bond(long id, String content) {
-        this.id = id;
+    public Bond( String isin, String issuer, long releaseDate, long repaymentDate) {
 
-    }
-
-    public long getId() {
-        return id;
+        this.isin = isin;
+        this.issuer = issuer;
+        this.releaseDate = releaseDate;
+        this.repaymentDate = repaymentDate;
     }
 
     public String getIsin() {
@@ -38,6 +34,7 @@ public class Bond {
         return repaymentDate;
     }
 
+
     public double getRating() {
         return rating;
     }
@@ -46,15 +43,23 @@ public class Bond {
         return outstandingNominal;
     }
 
-    public double getProfitability() {
-        return profitability;
+    public double getProfitability(long dateInMillis) {
+        return dateInMillis * 2;
     }
 
-    public double getDuration() {
-        return duration;
+    public double getDuration(long dateInMillis) {
+        return dateInMillis * 3;
     }
 
-    public double getRoe() {
-        return roe;
+    public double getRoe(long dateInMillis) {
+        return dateInMillis * 4;
+    }
+
+    public void setRating(double rating) {
+        this.rating = rating;
+    }
+
+    public void setOutstandingNominal(double outstandingNominal) {
+        this.outstandingNominal = outstandingNominal;
     }
 }
