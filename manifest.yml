@@ -1,0 +1,8 @@
+---
+applications:
+- name: bond-app
+  memory: 128M
+  instances: 1
+  host: rest-service
+  domain: org.bond.app
+  path: build/libs/bond-app-0.1.0.jar
