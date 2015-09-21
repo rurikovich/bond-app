@@ -14,7 +14,7 @@ apply plugin: 'spring-boot'
 
 jar {
     baseName = 'bond-app'
-    version =  '0.1.0'
+    version = '0.1.0'
 }
 
 repositories {
@@ -26,6 +26,8 @@ targetCompatibility = 1.8
 
 dependencies {
     compile("org.springframework.boot:spring-boot-starter-web")
+    compile('org.springframework:spring-test:4.2.1.RELEASE')
+    compile('org.springframework:spring-tx:4.2.1.RELEASE')
     testCompile("junit:junit")
 }
 

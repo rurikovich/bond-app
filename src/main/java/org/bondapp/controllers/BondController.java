@@ -24,7 +24,10 @@ public class BondController {
         List<BondDto> results = new ArrayList<>();
         long dateInMillis = System.currentTimeMillis();
         for (String isin : isins) {
-            results.add(new BondDto(bondService.findBondByIsin(isin), dateInMillis));
+            Bond bond = bondService.findBondByIsin(isin);
+            if (bond != null) {
+                results.add(new BondDto(bond, dateInMillis));
+            }
         }
         return results;
     }
@@ -35,6 +38,9 @@ public class BondController {
         for (String isin : isins) {
             List<Double> chartdata = new ArrayList<>();
             Bond bond = bondService.findBondByIsin(isin);
+            if (bond == null) {
+                continue;
+            }
             for (long time = startdate; time < enddate; time += MILLIS_IN_DAY) {
                 chartdata.add(bond.getProfitability(time));
             }
@@ -50,6 +56,9 @@ public class BondController {
         for (String isin : isins) {
             List<Double> chartdata = new ArrayList<>();
             Bond bond = bondService.findBondByIsin(isin);
+            if (bond == null) {
+                continue;
+            }
             for (long time = startdate; time < enddate; time += MILLIS_IN_DAY) {
                 chartdata.add(bond.getRoe(time));
             }
